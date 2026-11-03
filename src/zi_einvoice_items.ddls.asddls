@@ -33,7 +33,7 @@ define view entity ZI_EINVOICE_ITEMS
       @Semantics.amount.currencyCode: 'Currency'
       a.mwsbp           as TaxValue,
       @Semantics.amount.currencyCode: 'Currency'
-      a.netwr + a.mwsbp as TotalValue,
+      cast( cast( a.netwr as abap.dec(15,2) ) + cast( a.mwsbp as abap.dec(13,2) ) as abap.curr(15,2) ) as TotalValue,
       a.aubel           as SalesOrder,
       a.aupos           as SalesOrderItem,
       d.herkl           as OriginCountry
