@@ -235,7 +235,7 @@ define view entity ZI_EINVOICE_HEADER
       a.mwsbk                                    as TaxValue,
       @Semantics.amount.currencyCode: 'Currency'
       @Aggregation.default: #SUM
-      a.netwr + a.mwsbk                          as TotalValue
+      cast( cast( a.netwr as abap.dec(15,2) ) + cast( a.mwsbk as abap.dec(13,2) ) as abap.curr(15,2) ) as TotalValue
 
 }
 
